@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elunita lindaaa</title>
+  <style>
+    @media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  p, button {
+    font-size: 1rem;
+  }
+  #fraseAnimada, #detalleFinalTexto, #fraseSorpresa4 {
+    font-size: 1.6rem !important;
+    padding: 1rem;
+  }
+  #subtitulos {
+    font-size: 1.6rem !important;
+  }
+  .foto-zigzag {
+    width: 150px;
+    height: 150px;
+  }
+  .bloque-zigzag {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  p, button {
+    font-size: 0.9rem;
+  }
+  #fraseAnimada, #detalleFinalTexto, #fraseSorpresa4 {
+    font-size: 1.4rem !important;
+  }
+  #subtitulos {
+    font-size: 1.3rem !important;
+  }
+  .foto-zigzag {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+    #subtitulos {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  color: #ff6699;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.3;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+}
+
+    .bloque-zigzag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.bloque-zigzag.izq {
+  flex-direction: row;
+}
+
+.bloque-zigzag.der {
+  flex-direction: row-reverse;
+}
+
+.bloque-zigzag .texto {
+  flex: 1;
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  padding: 10px 20px;
+  max-width: 400px;
+  filter: blur(8px);
+  transition: filter 0.5s ease;
+  cursor: pointer;
+}
+
+.bloque-zigzag .texto.visible {
+  filter: blur(0);
+}
+
+.foto-zigzag {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  filter: blur(8px);
+  transition: filter 0.5s ease, transform 0.4s ease;
+  cursor: pointer;
+}
+
+.foto-zigzag.visible {
+  filter: blur(0);
+}
+
+.foto-zigzag:hover {
+  transform: scale(1.05);
+}
+    #revisarBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #6a0dad;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+#revisarBtn:hover {
+  background: #9b30ff;
+}
+    .palabra-inicio {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: aparecerPalabraInicio 0.6s ease-out forwards;
+  margin-right: 6px;
+}
+
+.palabra-inicio:nth-child(1) { animation-delay: 0.1s; }
+.palabra-inicio:nth-child(2) { animation-delay: 0.3s; }
+.palabra-inicio:nth-child(3) { animation-delay: 0.5s; }
+.palabra-inicio:nth-child(4) { animation-delay: 0.7s; }
+.palabra-inicio:nth-child(5) { animation-delay: 0.9s; }
+.palabra-inicio:nth-child(6) { animation-delay: 1.1s; }
+.palabra-inicio:nth-child(7) { animation-delay: 1.3s; }
+.palabra-inicio:nth-child(8) { animation-delay: 1.5s; }
+.palabra-inicio:nth-child(9) { animation-delay: 1.7s; }
+.palabra-inicio:nth-child(10) { animation-delay: 1.9s; }
+
+@keyframes aparecerPalabraInicio {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    .letra-inicio {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecerLetraInicio 0.5s forwards;
+}
+
+.letra-inicio:nth-child(1) { animation-delay: 0s; }
+.letra-inicio:nth-child(2) { animation-delay: 0.2s; }
+.letra-inicio:nth-child(3) { animation-delay: 0.4s; }
+.letra-inicio:nth-child(4) { animation-delay: 0.6s; }
+.letra-inicio:nth-child(5) { animation-delay: 0.8s; }
+.letra-inicio:nth-child(6) { animation-delay: 1s; }
+.letra-inicio:nth-child(7) { animation-delay: 1.2s; }
+.letra-inicio:nth-child(8) { animation-delay: 1.4s; }
+.letra-inicio:nth-child(9) { animation-delay: 1.6s; }
+.letra-inicio:nth-child(10) { animation-delay: 1.8s; }
+
+@keyframes aparecerLetraInicio {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.corazon-latido {
+  display: inline-block;
+  animation: latido 1.2s ease-in-out infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+.pantalla1 {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 30px;
+  background: linear-gradient(-45deg, #ffe4f0, #ffffff, #e479b4, #e66c94);
+  background-size: 400% 400%;
+  animation: fondoMovimiento 15s ease infinite;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  z-index: 2;
+  overflow-y: auto;
+}
+
+@keyframes fondoMovimiento {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pantalla1.active {
+  display: flex;
+  animation: aparecer 1s ease forwards;
+}
+
+#fraseAnimada {
+  font-family: 'Satisfy', cursive !important;
+  font-size: 3.2rem;
+  line-height: 1.6;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 6px #ffcccc, 0 0 20px #ff4d88;
+  max-width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+  white-space: pre-wrap;
+  animation: resplandor 3s ease-in-out infinite alternate;
+  text-align: center;
+  align-self: center;
+  margin: auto;
+  height: auto;
+  margin-top: 100px; /* ⬅️ aquí puedes cambiar el número para subirlo más o menos */
+}
+
+@keyframes resplandor {
+  from {
+    text-shadow: 2px 2px 6px #ffc0cb, 0 0 10px #ff4d88;
+  }
+  to {
+    text-shadow: 2px 2px 12px #ffffff, 0 0 25px #ff99cc;
+  }
+}
+
+.letra {
+  opacity: 0;
+  animation: aparecerLetra 0.05s forwards;
+  animation-fill-mode: both;
+}
+
+@keyframes aparecerLetra {
+  to {
+    opacity: 1;
+  }
+}
+
+#botonSiguiente1 {
+  align-self: center;
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 0;
+  display: none;
+}
+
+@keyframes aparecerLetra {
+  to {
+    opacity: 1;
+  }
+}
+    .palabra {
+  display: inline-block;
+  color: red;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecerPalabra 0.5s forwards;
+  margin: 0 4px;
+}
+
+@keyframes aparecerPalabra {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+    body {
+      background: linear-gradient(135deg, #fbd3e9, #bb377d);
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+      position: absolute;
+      max-width: 600px;
+      display: none;
+    }
+
+    .active {
+      display: block;
+      animation: aparecer 1s ease forwards;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 1.5rem;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .corazones, .estrellas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: flotar 6s linear infinite;
+    }
+
+    .corazon::before,
+    .corazon::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+   .estrellas {
+  position: fixed; /* Cambiado de absolute a fixed para que siempre estén en pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1000; /* Muy alto para estar siempre sobre todo */
+}
+.estrella {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px white;
+  opacity: 0;
+  animation: brillar 3s ease-out forwards;
+}
+    @keyframes brillar {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+       #corazonFinal {
+      font-size: 12rem;
+      color: #ff4d88;
+      text-align: center;
+      margin-top: 40px;
+      opacity: 0;
+      animation: latidoGiganteFinal 1.5s ease-in-out infinite;
+      transition: opacity 1.5s;
+    }
+
+    @keyframes latidoGigante {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+#corazonGigante.latido {
+  animation: latidoGigante 1.5s ease-in-out infinite;
+  opacity: 1 !important;
+}
+  </style>
+</head>
+<body>
+  
+  <!-- Pantalla de inicio -->
+ <div class="container active" id="pantalla0">
+
+  <h1 id="tituloAnimado">
+    <span class="letra-inicio">H</span><span class="letra-inicio">o</span><span class="letra-inicio">l</span><span class="letra-inicio">a</span>
+    &nbsp;
+    <span class="letra-inicio">m</span><span class="letra-inicio">i</span>
+    &nbsp;
+    <span class="letra-inicio">a</span><span class="letra-inicio">m</span><span class="letra-inicio">o</span><span class="letra-inicio">r</span>
+    <span class="corazon-latido">❤️</span>
+  </h1>
+  <p id="mensajeAnimado">
+  <span class="palabra-inicio">Estas</span>
+  <span class="palabra-inicio">son</span>
+  <span class="palabra-inicio">unas</span>
+  <span class="palabra-inicio">sopresas</span>
+  <span class="palabra-inicio">que</span>
+  <span class="palabra-inicio">tengo</span>
+  <span class="palabra-inicio">para</span>
+  <span class="palabra-inicio">usted</span>
+  <span class="palabra-inicio">mi</span>
+  <span class="palabra-inicio">vida</span>
+</p>
+  <button onclick="mostrarSorpresa(1)">Presiona para ver la sorpresa</button>
+</div>
+
+  <!-- Sorpresas 1 a 5 -->
+  <div id="pantalla1" class="pantalla1">
+    <audio id="audioSorpresa1" src="WhatsApp Ptt 2025-06-30 at 23.56.41.ogg"></audio>
+    <div id="fraseAnimada" class="frase-letra"></div>
+    <button id="botonSiguiente1" onclick="mostrarSorpresa(2)" style="display: none;">Siguiente sorpresa</button>
+  </div>
+
+ <div class="container" id="pantalla2">
+  <h1 id="tituloAnimado2">
+    <span class="letra-inicio">S</span><span class="letra-inicio">o</span><span class="letra-inicio">r</span><span class="letra-inicio">p</span><span class="letra-inicio">r</span><span class="letra-inicio">e</span><span class="letra-inicio">s</span><span class="letra-inicio">a</span>
+    &nbsp;
+    <span class="letra-inicio">1</span>
+    <span class="corazon-latido">❤️</span>
+  </h1>
+  <p id="mensajeAnimado2">
+    <span class="palabra-inicio">Esta</span>
+    <span class="palabra-inicio">sorpresa</span>
+    <span class="palabra-inicio">es</span>
+    <span class="palabra-inicio">una</span>
+    <span class="palabra-inicio">canción</span>
+    <span class="palabra-inicio">que</span>
+    <span class="palabra-inicio">va</span>
+    <span class="palabra-inicio">muy</span>
+    <span class="palabra-inicio">directa</span>
+    <span class="palabra-inicio">para</span>
+    <span class="palabra-inicio">ti</span>
+    <span class="palabra-inicio">amor</span>
+    <span class="palabra-inicio">❤️</span>
+  </p>
+  <button onclick="mostrarSorpresa(3)">Hazme click</button>
+</div>
+
+  <div id="pantalla3" class="pantalla1">
+  <audio id="audioSorpresa3" src="Hunter Hayes - Invisible (Traducida al español) [z61mIjtQWFM].mp3"></audio>
+  <div id="subtitulos" style="font-size: 2.5rem; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; max-width: 90%;"></div>
+  <div id="emojiAnimado" style="position: absolute; font-size: 4rem;"></div>
+  <button id="botonSiguiente3" onclick="mostrarSorpresa(4)" style="display: none;">Hazme click</button>
+</div>
+
+  <div id="pantalla4" class="pantalla1">
+  <div id="fraseSorpresa4" style="font-family: 'Satisfy', cursive; font-size: 2.6rem; line-height: 1.6; color: white; text-shadow: 1px 1px 6px #000; text-align: center; padding: 40px 30px; max-width: 90%; margin: auto;"></div>
+  <button onclick="mostrarSorpresa(5)" style="margin-top: 40px;">Última sorpresa</button>
+</div>
+
+
+ <div class="container" id="pantalla5" style="flex-direction: column; padding: 50px 20px; align-items: center;">
+
+  <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">Estas en todos lados</h1>
+
+  <div class="bloque-zigzag izq">
+  <div class="texto" onclick="alternarBlur(this)">Amor, cada vez que pienso en ti, me vienes a la mente como una rosa: hermosa, delicada y llena de vida. Tu ternura me encanta, es suave pero imposible de ignorar. Eres mi flor favorita y por ti, florezco cada día.</div>
+  <img src="Rosas.jpg" class="foto-zigzag" onclick="alternarBlur(this)" data-emojis="🌹,🌺,🌷,💐" />
+</div>
+
+  <div class="bloque-zigzag izq">
+  <div class="texto" onclick="alternarBlur(this)">Cuando miro el atardecer, pienso en usted. Los colores cálidos que pinta el cielo me recuerdan tu belleza. Así como el sol se despide con suavidad, tú iluminas mis días con ternura y paz. Eres mi momento favorito del día, ese que quiero guardar siempre en el corazón.</div>
+  <img src="Cielo.jpg" class="foto-zigzag" onclick="alternarBlur(this)" data-emojis="☀️,🌤️,🌈,☁️" />
+</div>
+
+  <div class="bloque-zigzag izq">
+  <div class="texto" onclick="alternarBlur(this)">Cada noche, al mirar las estrellas, pienso en ti. Brillas con una luz propia que ilumina la oscuridad y llena de esperanza mi corazón. Eres esa chispa eterna que guía mi camino, mi estrella más brillante en el cielo infinito.</div>
+  <img src="Unica 2.0.jpg" class="foto-zigzag" onclick="alternarBlur(this)" data-emojis="🌙,⭐,💫,🌌" />
+
+</div>
+ 
+
+  <button onclick="mostrarSorpresa(6)" style="margin-top: 40px;">Último detalle</button>
+</div>
+
+
+<div id="pantalla6" class="pantalla1" style="flex-direction: column; padding: 40px 20px; align-items: center;">
+  <div style="background: rgba(255, 255, 255, 0.15); padding: 20px 40px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 0 12px rgba(0,0,0,0.2); font-size: 2.5rem; font-weight: bold; color: white; text-shadow: 1px 1px 3px #000;">
+    💌 Detalle Final
+  </div>
+
+  <button id="btnMostrarDetalle" onclick="mostrarDetalleFinal()" style="margin-bottom: 40px;">Hazme click</button>
+
+  <div id="detalleFinalTexto" style="font-family: 'Satisfy', cursive; font-size: 2.4rem; line-height: 1.6; color: white; text-shadow: 1px 1px 5px #000; max-width: 90%; text-align: center;"></div>
+</div>
+ <div id="corazonGigante" style="font-size: 8rem; color: #ff4d88; text-align: center; margin-top: 30px; opacity: 0; transition: opacity 1s;">
+  ❤️
+</div>
+
+  
+
+  <div class="corazones" id="corazones"></div>
+  <div class="estrellas" id="estrellas"></div>
+  <div id="emojiExplosionContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 999;"></div>
+
+
+  <script>
+    function mostrarSubtitulosConEmojis() {
+  const frases = [
+    { tiempo: 13, texto: "Los pasillos llenos de gente son los lugares más solitarios", emoji: "" },
+    { tiempo: 19, texto: "Para los marginados y rebeldes", emoji: "" },
+    { tiempo: 22, texto: "O cualquiera que se atreva a ser diferente", emoji: "" },
+    { tiempo: 30, texto: "⌛Y has intentado durante tanto tiempo", emoji: "" },
+    { tiempo: 34, texto: "Encontrar cuál es tu lugar", emoji: "" },
+    { tiempo: 38, texto: "Pero en sus mentes estrechas" },
+    { tiempo: 40, texto: "No hay lugar para nadie que se atreva a hacer algo diferente" },
+    { tiempo: 49, texto: "Pero escucha un minuto", emoji: "" },
+    { tiempo: 55, texto: "Confía en Aquel", emoji: "" },
+    { tiempo: 58, texto: "💘que ha estado donde tú estás, deseando que todo fuera palos y piedras💘", emoji: "💘" },
+    { tiempo: 64, texto: "Esas palabras cortan profundamente, pero no significan", emoji: ""},
+    { tiempo: 68, texto: "Que estés completamente solo", emoji: "" },
+    { tiempo: 71, texto: "Y no eres invisible", emoji: "" },
+    { tiempo: 75, texto: "Escúchame", emoji: "" },
+    { tiempo: 77, texto: "💫Hay mucho más en la vida que lo que sientes ahora💫", emoji: "💫" },
+    { tiempo: 83, texto: "Algún día recordarás todos estos días", emoji: "" },
+    { tiempo: 87, texto: "Y todo este dolor será", emoji: "" },
+    { tiempo: 91, texto: "Invisible", emoji: "" },
+    { tiempo: 97, texto: "Oh, invisible", emoji: "" },
+    { tiempo: 104, texto: "Así que tu confianza es silenciosa", emoji: "" },
+    { tiempo: 108, texto: "📉Para ellos, el silencio parece debilidad📉", emoji: "📉" },
+    { tiempo: 111, texto: "Pero no tienes que luchar contra ello", emoji: "" },
+    { tiempo: 114, texto: "🌠📈Porque eres lo suficientemente fuerte para ganar sin una guerra📈🌠", emoji: "🌠" },
+    { tiempo: 120, texto: "Cada corazón tiene un ritmo", emoji: "" },
+    { tiempo: 123, texto: "Deja que el tuyo lata tan fuerte", emoji: "" },
+    { tiempo: 127, texto: "❤️‍🔥Que todos puedan oírlo❤️‍🔥", emoji: "❤️‍🔥" },
+    { tiempo: 130, texto: "Sí, te prometo que no necesitas ocultarlo más", emoji: "" },
+    { tiempo: 136, texto: "Oh, y nunca tengas miedo de hacer algo diferente", emoji: "" },
+    { tiempo: 141, texto: "Atrévete a ser algo más", emoji: "" },
+    { tiempo: 145, texto: "Confía en aquel", emoji: "" },
+    { tiempo: 148, texto: "💘Que ha estado donde tú estás, deseando que todo fuera palos y piedras💘", emoji: "💘" },
+    { tiempo: 153, texto: "Sí, las palabras cortan profundamente, pero ", emoji: "" },
+    { tiempo: 157, texto: "No significan que estés sola", emoji: "" },
+    { tiempo: 160, texto: "Y que no eres invisible", emoji: "" },
+    { tiempo: 164, texto: "Escúchame", emoji: "" },
+    { tiempo: 166, texto: "✨Hay mucho más en esta vida de lo que sientes ahora💫", emoji: "" },
+    { tiempo: 172, texto: "Y algún día mirarás atrás a todos estos días", emoji: "" },
+    { tiempo: 177, texto: "Y todo este dolor va a ser", emoji: "" },
+    { tiempo: 180, texto: "Invisible", emoji: "" },
+    { tiempo: 187, texto: "Estas etiquetas que te ponen", emoji: "" },
+    { tiempo: 191, texto: "Es porque ellos no te entienden", emoji: "" },
+    { tiempo: 194, texto: "Si miras más allá de este momento", emoji: "" },
+    { tiempo: 197, texto: "❤️‍🩹Verás que tienes a un NOVIO❤️‍🩹", emoji: "❤️‍🩹" },
+    { tiempo: 198.7, texto: "✨✨Agitando una bandera por lo que eres✨✨", emoji: "✨" },
+    { tiempo: 202, texto: "Y todo lo que vas a hacer", emoji: "" },
+    { tiempo: 205, texto: "Sí, así que aquí está por ti", emoji: "" },
+    { tiempo: 209, texto: "💖Y aquí está para cualquier vez que te hayas sentido invisible💖", emoji: "💖" },
+    { tiempo: 227, texto: "Y tú no eres invisible", emoji: "" },
+    { tiempo: 231, texto: "Escúchame", emoji: "" },
+    { tiempo: 234, texto: "Hay mucho más en la vida de lo que sientes ahora", emoji: "" },
+    { tiempo: 249, texto: "Sí, algún día mirarás atrás a todos estos días", emoji: "" },
+    { tiempo: 254, texto: "Y todo este dolor será", emoji: "" },
+    { tiempo: 260, texto: "Invisible", emoji: "" },
+    { tiempo: 265, texto: "Será invisible", emoji: "" }
+  ];
+
+  const subtitulo = document.getElementById("subtitulos");
+  const emoji = document.getElementById("emojiAnimado");
+  const boton = document.getElementById("botonSiguiente3");
+
+  const audio = document.getElementById("audioSorpresa3");
+  audio.currentTime = 0;
+  audio.play();
+
+  frases.forEach((frase, i) => {
+    setTimeout(() => {
+      subtitulo.innerText = frase.texto;
+
+      if (frase.emoji) {
+        mostrarEmoji(frase.emoji);
+      }
+
+      if (i === frases.length - 1) {
+        setTimeout(() => boton.style.display = "inline-block", 3000);
+      }
+    }, frase.tiempo * 1000);
+  });
+}
+
+function mostrarEmoji(simbolo) {
+  const emoji = document.getElementById("emojiAnimado");
+  emoji.innerText = simbolo;
+  emoji.style.left = `${Math.random() * 80 + 10}%`;
+  emoji.style.top = `${Math.random() * 60 + 20}%`;
+  emoji.style.opacity = 1;
+  emoji.style.transition = "opacity 2s ease-out";
+  setTimeout(() => {
+    emoji.style.opacity = 0;
+  }, 1500);
+}
+    function animarFraseSorpresa1() {
+  const frase = "Jiji, te amo, Eluney. Que nunca se te olvide lo mucho que te amo y que te adoro. Me dijiste que estuviste mal esta semana por lo de tus amigas, que es lo que más te tiene en la mierda, pero bueno, espero que esto te pueda subir un poco el ánimo. Wawa, eres una mujer la raja, de verdad, eres hermosa, pulenta, divertida. Tú me encantas, no sé cómo la gente puede tratarte tan mal a veces, te juro que no lo entiendo, pero bueno, qué se le va a hacer, hay gente y gente.Y yo, por lo menos, sé a quién tengo a mi lado: a una mujer hermosa y maravillosa como tú. Que nunca se te olvide eso, preciosa. Te lo juro que estoy muy feliz y orgulloso de tener a alguien como tú. Me encantas, mujer, me re encantas, eres un amor, nunca lo olvides.Te amo, Elu, espero que te guste la siguiente sorpresa, jiji. ¡TE AMO!";
+   const contenedor = document.getElementById("fraseAnimada");
+  contenedor.innerHTML = "";
+
+  frase.split("").forEach((letra, i) => {
+    const span = document.createElement("span");
+    span.className = "letra";
+    span.textContent = letra === " " ? "\u00A0" : letra; // espacio fijo
+    span.style.animationDelay = `${i * 0.05}s`;
+    contenedor.appendChild(span);
+  });
+
+  // Mostrar botón después de la animación
+  setTimeout(() => {
+    document.getElementById("botonSiguiente1").style.display = "inline-block";
+  }, frase.length * 50);
+}
+
+function mostrarSorpresa(num) {
+  for (let i = 0; i <= 6; i++) {
+    document.getElementById("pantalla" + i).classList.remove("active");
+  }
+  document.getElementById("pantalla" + num).classList.add("active");
+  if (num === 4) {
+  animarFraseSorpresa4();
+}
+
+  if (num === 1) {
+    lanzarCorazones();
+   
+
+    const audio = document.getElementById("audioSorpresa1");
+    const contenedor = document.getElementById("fraseAnimada");
+    const boton = document.getElementById("botonSiguiente1");
+
+    contenedor.innerHTML = "";
+    boton.style.display = "none";
+
+    audio.currentTime = 0;
+    audio.play();
+
+    audio.onended = () => {
+      animarFraseSorpresa1();
+    };
+  }
+
+  if (num === 3) {
+  
+    mostrarSubtitulosConEmojis();
+  }
+}
+
+
+
+    function lanzarCorazones() {
+      const contenedor = document.getElementById("corazones");
+      for (let i = 0; i < 50; i++) {
+        const corazon = document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.animationDuration = 4 + Math.random() * 4 + "s";
+        corazon.style.opacity = Math.random();
+        contenedor.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 8000);
+      }
+    }
+
+   
+ window.onload = () => {
+  setInterval(() => {
+    const estrella = document.createElement("div");
+    estrella.classList.add("estrella");
+    estrella.style.left = Math.random() * 100 + "vw";
+    estrella.style.top = Math.random() * 100 + "vh";
+    estrella.style.animationDuration = 3 + Math.random() * 2 + "s";
+    document.getElementById("estrellas").appendChild(estrella);
+    setTimeout(() => estrella.remove(), 6000); // más tiempo para que se vean
+  }, 400);
+};
+ 
+function animarFraseSorpresa4() {
+  const texto = "Espero te haya gustado la canción, mi Elunita. Que sepas que no estás sola, amor, y que no eres invisible. Eres una gran mujer, mi mujer. Te amo y te adoro mucho, amocito. Las cosas a veces suelen ser difíciles, estresantes o molestas, como lo que te ha pasado en esta semana. Pero hay que ser fuerte, Elu, hay que aguantar y ser fuerte. Pronto todos esos problemas serán invisibles y usted estará mejor y bien. Te amo, Elunita.";
+  const contenedor = document.getElementById("fraseSorpresa4");
+  contenedor.innerHTML = "";
+
+  texto.split("").forEach((letra, i) => {
+    const span = document.createElement("span");
+    span.textContent = letra === " " ? "\u00A0" : letra;
+    span.style.opacity = 0;
+    span.style.display = "inline-block";
+    span.style.transition = "opacity 0.4s ease";
+    contenedor.appendChild(span);
+    setTimeout(() => span.style.opacity = 1, i * 40);
+  });
+}  
+let pantallaActual = 0;
+
+function revisarSiguiente() {
+  // Pausa todos los audios activos
+  const audios = document.querySelectorAll("audio");
+  audios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  // Avanza a la siguiente pantalla
+  pantallaActual++;
+  if (pantallaActual > 6) pantallaActual = 0; // Reinicia al llegar al final
+
+  mostrarSorpresa(pantallaActual);
+}  
+function explosionEmojis(event) {
+  const img = event.target;
+  const customEmojis = img.dataset.emojis ? img.dataset.emojis.split(",") : ["❤️", "✨", "💖"];
+  const container = document.getElementById("emojiExplosionContainer");
+
+  const rect = img.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 30; i++) {
+    const emoji = document.createElement("div");
+    emoji.textContent = customEmojis[Math.floor(Math.random() * customEmojis.length)];
+    emoji.style.position = "absolute";
+    emoji.style.left = `${centerX}px`;
+    emoji.style.top = `${centerY}px`;
+    emoji.style.fontSize = `${Math.random() * 24 + 16}px`;
+    emoji.style.opacity = 1;
+    emoji.style.transition = "transform 1.2s ease-out, opacity 1.2s ease-out";
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 100 + 50;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance + 100;
+
+    setTimeout(() => {
+      emoji.style.transform = `translate(${x}px, ${y}px) scale(1.5) rotate(${Math.random() * 360}deg)`;
+      emoji.style.opacity = 0;
+    }, 10);
+
+    setTimeout(() => emoji.remove(), 1500);
+    container.appendChild(emoji);
+  }
+}
+function alternarBlur(elemento) {
+  const bloque = elemento.closest('.bloque-zigzag');
+  const texto = bloque.querySelector('.texto');
+  const foto = bloque.querySelector('.foto-zigzag');
+
+  // Si el texto aún no está visible, lo mostramos
+  if (!texto.classList.contains('visible')) {
+    texto.classList.add('visible');
+    return;
+  }
+
+  // Si el texto ya está visible pero la imagen no, mostramos la imagen
+  if (!foto.classList.contains('visible')) {
+    foto.classList.add('visible');
+    return;
+  }
+
+  // Si ambos están visibles, lanzamos los emojis (pero no quitamos la visibilidad)
+  explosionEmojis({ target: foto });
+}
+  function mostrarDetalleFinal() {
+  const texto = "Bueno, Elunita, espero que te haya gustado lo que te preparé. La verdad es que está hecho con mucho cariño y mucha dedicación. Cada vez estamos más pulentos con lo de las páginas, dsfkhjdkhf , pero bueno, amor, igual perdón si a veces soy muy empalagoso contigo con esto de darte amor a cada rato. Me habías dicho que tú no estabas acostumbrada a eso porque cuando estabas mal, a ti nunca te dieron un abrazo o cariño, creo. Pero bueno, la verdad, amor, es que a mí tampoco, pero sí me hubiera gustado que alguien me diera un abrazo o caricias. La verdad es que cuando niño la sufrí demasiado, nunca me dieron un cariño como el que te doy a ti. Y la verdad es que si soy así contigo, amor, es para que no te sientas sola o algo así de verdad. Perdón si a veces soy muy hincha pelotas o algo así, pero te juro que solo lo hago para que te sientas mejor y porque me gusta regalonearte y hacerte estas cositas, porque igual sé que puedo levantarte una sonrisita. Cada día ando pensando en ti, mujer, en tu bienestar, en cómo estarás. Me preocupas mucho y sé que a veces como que me sobreprocupo por ti, pero no quiero dejar de hacerlo, Elu, de verdad me importas y necesito saber qué te está pasando. Eres muy especial para mí. Solo quiero que pase el tiempo para que esta linda relación dé frutos y sea más bonita de lo que ya es.";
+
+  const contenedor = document.getElementById("detalleFinalTexto");
+  const boton = document.getElementById("btnMostrarDetalle");
+  const corazon = document.getElementById("corazonGigante");
+
+  boton.style.display = "none";
+  contenedor.innerHTML = "";
+  corazon.style.opacity = 0;
+  corazon.classList.remove("latido"); // Reiniciar animación si ya estaba
+
+  texto.split("").forEach((letra, i) => {
+    const span = document.createElement("span");
+    span.textContent = letra === " " ? "\u00A0" : letra;
+    span.style.opacity = 0;
+    span.style.display = "inline-block";
+    span.style.transition = "opacity 0.4s ease";
+    setTimeout(() => span.style.opacity = 1, i * 50);
+    contenedor.appendChild(span);
+  });
+
+  // Mostrar el corazón cuando termina el texto
+  setTimeout(() => {
+    corazon.style.opacity = 1;
+    corazon.classList.add("latido");
+  }, texto.length * 50 + 500);
+}
+  </script>
+</body>
+</html>
