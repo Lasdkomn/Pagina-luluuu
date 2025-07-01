@@ -9,6 +9,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Elunita lindaaa</title>
   <style>
+    #siguienteBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+#siguienteBtn:hover {
+  background: #ff1493;
+}
     @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
@@ -478,6 +496,7 @@
   </style>
 </head>
 <body>
+  <button id="siguienteBtn" onclick="revisarSiguiente()">➡️ Siguiente sorpresa</button>
   
   <!-- Pantalla de inicio -->
  <div class="container active" id="pantalla0">
@@ -884,3 +903,4 @@ function alternarBlur(elemento) {
   </script>
 </body>
 </html>
+
